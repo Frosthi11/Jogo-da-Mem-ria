@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo da Memória - Frutas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Tela Inicial -->
+  <div id="start-screen">
+    <h1>🍎 Jogo da Memória 🍇</h1>
+    <p class="subtitle">Encontre os pares de frutas!</p>
+    <div class="fruit-display">🍎🍌🍇🍉🍓🍍</div>
+    <p>Teste sua memória combinando as frutas iguais. Clique nas cartas para revelá-las e encontre todos os pares!</p>
+    <button id="start-btn" onclick="startGame()">🎮 Começar Jogo</button>
+  </div>
+
+  <!-- Jogo -->
+  <div id="game-container">
+    <h1>🍎 Jogo da Memória 🍇</h1>
+    <div id="game-counter">
+      <p>🎮 Partidas Jogadas: <span id="games-count">1</span></p>
+    </div>
+
+    <div class="memory-game">
+      <!-- 12 cartas (6 pares) -->
+      <div class="card" data-framework="a"><div class="front">?</div><div class="back">🍎</div></div>
+      <div class="card" data-framework="a"><div class="front">?</div><div class="back">🍎</div></div>
+
+      <div class="card" data-framework="b"><div class="front">?</div><div class="back">🍌</div></div>
+      <div class="card" data-framework="b"><div class="front">?</div><div class="back">🍌</div></div>
+
+      <div class="card" data-framework="c"><div class="front">?</div><div class="back">🍇</div></div>
+      <div class="card" data-framework="c"><div class="front">?</div><div class="back">🍇</div></div>
+
+      <div class="card" data-framework="d"><div class="front">?</div><div class="back">🍉</div></div>
+      <div class="card" data-framework="d"><div class="front">?</div><div class="back">🍉</div></div>
+
+      <div class="card" data-framework="e"><div class="front">?</div><div class="back">🍓</div></div>
+      <div class="card" data-framework="e"><div class="front">?</div><div class="back">🍓</div></div>
+
+      <div class="card" data-framework="f"><div class="front">?</div><div class="back">🍍</div></div>
+      <div class="card" data-framework="f"><div class="front">?</div><div class="back">🍍</div></div>
+    </div>
+
+    <div id="victory-message" class="hidden">
+      <h2>🎉 Parabéns! Você venceu! 🎉</h2>
+      <p>Você encontrou todos os pares de frutas!</p>
+      <button onclick="restartGame()">🔄 Jogar Novamente</button>
+      <button onclick="backToStart()">🏠 Tela Inicial</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
