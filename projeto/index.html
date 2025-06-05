@@ -7,46 +7,70 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Controle de Som -->
+  <div class="sound-control" onclick="toggleSound()">
+    <span id="sound-icon">🔊</span> Som
+  </div>
+
   <!-- Tela Inicial -->
   <div id="start-screen">
     <h1>🍎 Jogo da Memória 🍇</h1>
     <p class="subtitle">Encontre os pares de frutas!</p>
-    <div class="fruit-display">🍎🍌🍇🍉🍓🍍</div>
-    <p>Teste sua memória combinando as frutas iguais. Clique nas cartas para revelá-las e encontre todos os pares!</p>
+    <div class="fruit-display">🍎🍌🍇🍉🍓🍍🥝🍑</div>
+    
+    <div class="difficulty-selector">
+      <h3>🎯 Escolha a Dificuldade:</h3>
+      <div class="difficulty-buttons">
+        <button class="difficulty-btn selected" onclick="selectDifficulty('easy')">
+          😊 Fácil (3x2 - 6 pares)
+        </button>
+        <button class="difficulty-btn" onclick="selectDifficulty('medium')">
+          🤔 Médio (4x3 - 12 pares)
+        </button>
+        <button class="difficulty-btn" onclick="selectDifficulty('hard')">
+          😰 Difícil (5x4 - 20 pares)
+        </button>
+      </div>
+    </div>
+    
+    <p>Teste sua memória combinando as frutas iguais. Clique nas cartas para revelá-las e encontre todos os pares! Ganhe pontos baseados na velocidade e precisão.</p>
     <button id="start-btn" onclick="startGame()">🎮 Começar Jogo</button>
   </div>
 
   <!-- Jogo -->
   <div id="game-container">
-    <h1>🍎 Jogo da Memória 🍇</h1>
-    <div id="game-counter">
-      <p>🎮 Partidas Jogadas: <span id="games-count">1</span></p>
+    <div id="game-header">
+      <h1>🍎 Jogo da Memória 🍇</h1>
+      <div class="game-stats">
+        <div class="stat-item">
+          🎮 Partida: <span id="games-count">1</span>
+        </div>
+        <div class="stat-item" id="timer">
+          ⏱️ <span id="time-display">00:00</span>
+        </div>
+        <div class="stat-item" id="score">
+          🏆 <span id="score-display">0</span> pts
+        </div>
+        <div class="stat-item">
+          🎯 <span id="moves-display">0</span> jogadas
+        </div>
+        <button id="quit-btn" onclick="quitGame()">🚪 Desistir</button>
+      </div>
     </div>
 
-    <div class="memory-game">
-      <!-- 12 cartas (6 pares) -->
-      <div class="card" data-framework="a"><div class="front">?</div><div class="back">🍎</div></div>
-      <div class="card" data-framework="a"><div class="front">?</div><div class="back">🍎</div></div>
-
-      <div class="card" data-framework="b"><div class="front">?</div><div class="back">🍌</div></div>
-      <div class="card" data-framework="b"><div class="front">?</div><div class="back">🍌</div></div>
-
-      <div class="card" data-framework="c"><div class="front">?</div><div class="back">🍇</div></div>
-      <div class="card" data-framework="c"><div class="front">?</div><div class="back">🍇</div></div>
-
-      <div class="card" data-framework="d"><div class="front">?</div><div class="back">🍉</div></div>
-      <div class="card" data-framework="d"><div class="front">?</div><div class="back">🍉</div></div>
-
-      <div class="card" data-framework="e"><div class="front">?</div><div class="back">🍓</div></div>
-      <div class="card" data-framework="e"><div class="front">?</div><div class="back">🍓</div></div>
-
-      <div class="card" data-framework="f"><div class="front">?</div><div class="back">🍍</div></div>
-      <div class="card" data-framework="f"><div class="front">?</div><div class="back">🍍</div></div>
+    <div class="memory-game" id="game-board">
+      <!-- Cartas serão geradas dinamicamente -->
     </div>
 
     <div id="victory-message" class="hidden">
       <h2>🎉 Parabéns! Você venceu! 🎉</h2>
-      <p>Você encontrou todos os pares de frutas!</p>
+      <div class="final-stats">
+        <h3>📊 Estatísticas Finais:</h3>
+        <p>⏱️ Tempo: <span id="final-time">00:00</span></p>
+        <p>🏆 Pontuação: <span id="final-score">0</span> pontos</p>
+        <p>🎯 Jogadas: <span id="final-moves">0</span></p>
+        <p>📈 Precisão: <span id="accuracy">100%</span></p>
+      </div>
       <button onclick="restartGame()">🔄 Jogar Novamente</button>
       <button onclick="backToStart()">🏠 Tela Inicial</button>
     </div>
